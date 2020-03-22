@@ -3,11 +3,7 @@ devops@ip-172-31-29-253:~$ ansible-playbook -i inventory centosna.yaml
 PLAY [all] *************************************************************************************************************************************************************************************
 
 TASK [Gathering Facts] *************************************************************************************************************************************************************************
-ok: [34.218.233.232]
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 34.221.147.134 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A
-future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
-information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-ok: [34.221.147.134]
+ok: [172.31.17.245]
 [DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host localhost should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future
 Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
 information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
@@ -15,75 +11,84 @@ ok: [localhost]
 
 TASK [fail for unsupported os] *****************************************************************************************************************************************************************
 fatal: [localhost]: FAILED! => {"changed": false, "msg": "This playbook runs only on centos"}
-fatal: [34.221.147.134]: FAILED! => {"changed": false, "msg": "This playbook runs only on centos"}
-skipping: [34.218.233.232]
+skipping: [172.31.17.245]
 
 TASK [install packages for centos] *************************************************************************************************************************************************************
-ok: [34.218.233.232] => (item=gcc)
-ok: [34.218.233.232] => (item=glibc)
-ok: [34.218.233.232] => (item=glibc-common)
-ok: [34.218.233.232] => (item=wget)
-ok: [34.218.233.232] => (item=unzip)
-ok: [34.218.233.232] => (item=httpd)
-ok: [34.218.233.232] => (item=php)
-ok: [34.218.233.232] => (item=gd)
-ok: [34.218.233.232] => (item=gd-devel)
-ok: [34.218.233.232] => (item=perl)
-ok: [34.218.233.232] => (item=postfix)
-ok: [34.218.233.232] => (item=make)
-ok: [34.218.233.232] => (item=gettext)
-ok: [34.218.233.232] => (item=automake)
-ok: [34.218.233.232] => (item=autoconf)
-ok: [34.218.233.232] => (item=openssl-devel)
-ok: [34.218.233.232] => (item=net-snmp)
-ok: [34.218.233.232] => (item=net-snmp-utils)
-ok: [34.218.233.232] => (item=epel-release)
-ok: [34.218.233.232] => (item=perl-Net-SNMP)
-changed: [34.218.233.232] => (item=python-passlib)
+ok: [172.31.17.245] => (item=gcc)
+ok: [172.31.17.245] => (item=glibc)
+ok: [172.31.17.245] => (item=glibc-common)
+ok: [172.31.17.245] => (item=wget)
+ok: [172.31.17.245] => (item=unzip)
+ok: [172.31.17.245] => (item=httpd)
+ok: [172.31.17.245] => (item=php)
+ok: [172.31.17.245] => (item=gd)
+ok: [172.31.17.245] => (item=gd-devel)
+ok: [172.31.17.245] => (item=perl)
+ok: [172.31.17.245] => (item=postfix)
+ok: [172.31.17.245] => (item=make)
+ok: [172.31.17.245] => (item=gettext)
+ok: [172.31.17.245] => (item=automake)
+ok: [172.31.17.245] => (item=autoconf)
+ok: [172.31.17.245] => (item=openssl-devel)
+ok: [172.31.17.245] => (item=net-snmp)
+ok: [172.31.17.245] => (item=net-snmp-utils)
+ok: [172.31.17.245] => (item=epel-release)
+ok: [172.31.17.245] => (item=perl-Net-SNMP)
+ok: [172.31.17.245] => (item=python-passlib)
 
 TASK [Download the source to temp folder] ******************************************************************************************************************************************************
-ok: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [untar the code] **************************************************************************************************************************************************************************
-ok: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [Compile Code] ****************************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Create User and Group] *******************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Install Binaries] ************************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Install Service / Daemon] ****************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Install Command Mode] ********************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Install Configuration Files] *************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Install Apache Config Files] *************************************************************************************************************************************************************
-changed: [34.218.233.232]
+changed: [172.31.17.245]
 
 TASK [Create nagiosadmin user account] *********************************************************************************************************************************************************
-changed: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [start httpd] *****************************************************************************************************************************************************************************
-changed: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [start nagios] ****************************************************************************************************************************************************************************
-changed: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [Download the plugin to temp folder] ******************************************************************************************************************************************************
-changed: [34.218.233.232]
+ok: [172.31.17.245]
 
 TASK [untar the plugin code] *******************************************************************************************************************************************************************
-fatal: [34.218.233.232]: FAILED! => {"changed": false, "msg": "Source '/tmp/nagios-plugins.tar.gz' does not exist"}
+ok: [172.31.17.245]
+
+TASK [Compile + Install] ***********************************************************************************************************************************************************************
+changed: [172.31.17.245]
+
+TASK [restart nagios] **************************************************************************************************************************************************************************
+changed: [172.31.17.245]
+
+TASK [restart httpd] ***************************************************************************************************************************************************************************
+changed: [172.31.17.245]
 
 PLAY RECAP *************************************************************************************************************************************************************************************
-34.218.233.232             : ok=15   changed=12   unreachable=0    failed=1    skipped=1    rescued=0    ignored=0
-34.221.147.134             : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+172.31.17.245              : ok=19   changed=10   unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+devops@ip-172-31-29-253:~$

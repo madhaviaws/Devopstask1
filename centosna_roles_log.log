@@ -1,0 +1,76 @@
+devops@ip-172-31-29-253:~/Nagios$ ansible-playbook -i inventory centosna_roles.yaml
+
+PLAY [all] *************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************************************************
+ok: [172.31.17.245]
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host localhost should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future
+Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
+information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [localhost]
+
+TASK [/home/devops/Nagios : fail for unsupported os] *******************************************************************************************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "This playbook runs only on centos"}
+skipping: [172.31.17.245]
+
+TASK [/home/devops/Nagios : install packages for centos] ***************************************************************************************************************************************
+ok: [172.31.17.245] => (item=gcc)
+ok: [172.31.17.245] => (item=glibc)
+ok: [172.31.17.245] => (item=glibc-common)
+ok: [172.31.17.245] => (item=wget)
+ok: [172.31.17.245] => (item=unzip)
+ok: [172.31.17.245] => (item=httpd)
+ok: [172.31.17.245] => (item=php)
+ok: [172.31.17.245] => (item=gd)
+ok: [172.31.17.245] => (item=gd-devel)
+ok: [172.31.17.245] => (item=perl)
+ok: [172.31.17.245] => (item=postfix)
+ok: [172.31.17.245] => (item=make)
+ok: [172.31.17.245] => (item=gettext)
+ok: [172.31.17.245] => (item=automake)
+ok: [172.31.17.245] => (item=autoconf)
+ok: [172.31.17.245] => (item=openssl-devel)
+ok: [172.31.17.245] => (item=net-snmp)
+ok: [172.31.17.245] => (item=net-snmp-utils)
+ok: [172.31.17.245] => (item=epel-release)
+ok: [172.31.17.245] => (item=perl-Net-SNMP)
+ok: [172.31.17.245] => (item=python-passlib)
+
+TASK [/home/devops/Nagios : Download the source to temp folder] ********************************************************************************************************************************
+ok: [172.31.17.245]
+
+TASK [/home/devops/Nagios : untar the code] ****************************************************************************************************************************************************
+ok: [172.31.17.245]
+
+TASK [/home/devops/Nagios : Compile Code] ******************************************************************************************************************************************************
+changed: [172.31.17.245] => (item=./configure)
+changed: [172.31.17.245] => (item=make all)
+changed: [172.31.17.245] => (item=make install-groups-users)
+changed: [172.31.17.245] => (item=usermod -a -G nagios apache)
+changed: [172.31.17.245] => (item=make install)
+changed: [172.31.17.245] => (item=make install-daemoninit)
+changed: [172.31.17.245] => (item=make install-commandmode)
+changed: [172.31.17.245] => (item=make install-config)
+changed: [172.31.17.245] => (item=make install-webconf)
+
+TASK [/home/devops/Nagios : Create nagiosadmin user account] ***********************************************************************************************************************************
+ok: [172.31.17.245]
+
+TASK [/home/devops/Nagios : Download the plugin to temp folder] ********************************************************************************************************************************
+ok: [172.31.17.245]
+
+TASK [/home/devops/Nagios : untar the plugin code] *********************************************************************************************************************************************
+ok: [172.31.17.245]
+
+TASK [/home/devops/Nagios : Compile + Install] *************************************************************************************************************************************************
+changed: [172.31.17.245]
+
+RUNNING HANDLER [/home/devops/Nagios : restart nagios and httpd] *******************************************************************************************************************************
+changed: [172.31.17.245] => (item=httpd)
+changed: [172.31.17.245] => (item=nagios)
+
+PLAY RECAP *************************************************************************************************************************************************************************************
+172.31.17.245              : ok=10   changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+devops@ip-172-31-29-253:~/Nagios$
